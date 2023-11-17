@@ -1,0 +1,86 @@
+.banner-section {
+    padding: 8.25rem 0;
+    background-image: url(/static/images/banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.banner-container {
+    position: relative;
+}
+
+.banner-content {
+    width: 60%;
+}
+
+.banner-content h2,
+.banner-content p,
+.banner-content form {
+    position: relative;
+    z-index: 5;
+}
+
+.right-side {
+    position: absolute;
+    bottom: -8.25rem;
+    right: 0;
+}
+
+.rounded-shadow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 33rem;
+    height: 33rem;
+    border-radius: 38.25rem;
+    background: rgba(196, 196, 196, 0.70);
+    mix-blend-mode: multiply;
+    filter: blur(40.810001373291016px);
+}
+
+.smaller-rounded-shadow {
+    position: absolute;
+    right: 0;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 33.75rem;
+    background: radial-gradient(86.68% 86.68% at 50% 50%, rgba(205, 205, 205, 0.80) 0%, rgba(196, 196, 196, 0.00) 100%);
+    mix-blend-mode: multiply;
+    filter: blur(13.102849960327148px);
+}
+
+.right-side img {
+    width: 25rem;
+    position: relative;
+    z-index: 1;
+}
+
+.banner-title {
+    color: #FFF;
+}
+
+.banner-info {
+    color: #504F4F;
+    margin-bottom: 2rem;
+}
+
+.find-food-form {
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: #FFF;
+}
+
+.input-field {
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    background: #F5F5F5;
+    padding: 0.44rem 0 0.5rem 1rem;
+    margin: 0.4rem 0;
+}
+
+.find-food-button {
+    width: 12.5rem;
+}

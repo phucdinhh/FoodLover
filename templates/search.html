@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for recipe in data.results %}
+                <div class="col-6 col-md-3">
+                    <div class="card">
+                        <img src="{{ recipe.image }}" alt="{{ recipe.title }}" class="card-img-top img-thumbnail">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.title }}</h5>
+                            <a href="/recipe/{{ recipe.id }}" class="btn btn-primary">Check recipe</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock%}

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <img src="{{ data.image }}" class="img-fluid" alt="{{ data.title }}">
+        <h2>{{ data.title }}</h2>
+    </div>
+    <figure>
+        <blockquote class="blockquote">
+            <p id="summary"></p>
+        </blockquote>
+    </figure>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Measures</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for ingredient in data.extendedIngredients %}
+                <tr>
+                    <td>
+                        <img src="https://spoonacular.com/cdn/ingredients_100x100/{{ ingredient.image }}"
+                            alt="{{ ingredient.name }}">
+                    </td>
+                    <td>
+                        <p>
+                            {{ ingredient.measures.metric.amount }} <span>{{ ingredient.measures.metric.unitShort }}</span>
+                        </p>
+                    </td>
+                    <td>{{ ingredient.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const summaryData = "{{ data.summary }}"
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = summaryData;
+
+        const summary = document.getElementById('summary');
+        summary.innerHTML = tempElement.textContent || tempElement.innerHTML;
+    })
+</script>
+{% endblock%}

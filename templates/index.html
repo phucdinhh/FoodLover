@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <section class="banner-section">
+        <div class="banner-container container">
+            <div class="banner-content">
+                <h2 class="banner-title object-shadow-2 headline-1-bold">Are you starving?</h2>
+                <p class="banner-info headline-6">Within a few clicks, find meals that are accessible near you</p>
+                <form class="d-flex find-food-form" action="/" method="post">
+                    <input type="text" name="food" placeholder="Enter Your Food" class="input-field">
+                    <button type="submit" class="primary-button button-bold find-food-button">Find Food</button>
+                </form>
+                <div class="right-side">
+                    <div class="rounded-shadow"></div>
+                    <div class="smaller-rounded-shadow"></div>
+                    <img src="/static/images/Noodle.png" alt="Noodle">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock%}
