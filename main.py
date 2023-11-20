@@ -1,8 +1,8 @@
 from flask import Blueprint, request, render_template, redirect, url_for, jsonify
 from flask_login import login_required, current_user
-from . import db
-from .models.user import User
-from .models.favorite import Favorite
+from app import db
+from models.user import User
+from models.favorite import Favorite
 import os
 import requests
 
@@ -40,7 +40,6 @@ def search():
 
             if rq.status_code == 200:
                 data = rq.json()
-                print('rq', data)
                 return render_template('search.html', data=data)
 
             else:
