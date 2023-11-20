@@ -53,8 +53,7 @@ def recipe(recipe_id):
     if request.method == 'GET':
 
         # Setup spoonacular API
-        api_get_product_info_url = f'https://api.spoonacular.com/recipes/{
-            recipe_id}/information'
+        api_get_product_info_url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
         api_key = os.getenv('SPOONACULAR_API_KEY')
 
         try:
