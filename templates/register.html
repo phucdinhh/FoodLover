@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form class="container w-25" action="/register" method="post">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'exist' %}
+                        <p class="text-warning">{{ message }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.</p>
+                    {% else %}
+                        <p class="text-danger">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-3">
+            <label for="confirmation" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmation" name="confirmation">
+        </div>
+        <div>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+{% endblock %}

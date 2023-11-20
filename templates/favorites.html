@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2 class="text-center">Favorites</h2>
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for recipe in data %}
+                <tr>
+                    <td>
+                        <img src="{{ recipe.image }}" alt="{{ recipe.title }}" style="width: 10rem;">
+                    </td>
+                    <td>{{ recipe.title }}</td>
+                    <td>
+                        <button class="primary-button button-bold" onclick="deleteRecipe('{{ recipe.id }}')"><i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const deleteRecipe = async (recipe_id) => {
+            await fetch('/favorites', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify({recipe_id: recipe_id})
+            }).then((res) => {
+                location.reload()
+            })
+        }
+    </script>
+{% endblock %}

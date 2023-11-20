@@ -4,7 +4,16 @@
 <div class="container">
     <div class="text-center">
         <img src="{{ data.image }}" class="img-fluid" alt="{{ data.title }}">
-        <h2>{{ data.title }}</h2>
+        <div>
+            <h2>{{ data.title }}</h2>
+            <div style="cursor: pointer;" id="heart_btn">
+                {% if isFavorite %}
+                    <i id="add_favorite" class="bi bi-heart-fill"></i>
+                {% else %}
+                    <i id="add_favorite" class="bi bi-heart"></i>
+                {% endif %}
+            </div>
+        </div>
     </div>
     <figure>
         <blockquote class="blockquote">
@@ -47,6 +56,27 @@
 
         const summary = document.getElementById('summary');
         summary.innerHTML = tempElement.textContent || tempElement.innerHTML;
+
+        const recipe_id = '{{ data.id }}'
+        const isLoggedIn = '{{ current_user.is_authenticated }}'
+
+        const heartBtn = document.getElementById('heart_btn')
+        heartBtn.addEventListener('click', async (e) => {
+            if (isLoggedIn === 'False'){
+                window.location.assign('{{ url_for("auth.login") }}')
+                return;
+            }
+
+            try {
+                await fetch(`/recipe/${recipe_id}`, {
+                    method: 'PUT',
+                }).then((response) => {
+                    location.reload()
+                })
+            } catch (error) {
+                console.log(`Error: ${error}`)
+            }
+        })
     })
 </script>
 {% endblock%}

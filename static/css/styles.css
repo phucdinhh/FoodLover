@@ -26,3 +26,8 @@
 .navbar-brand .brand-last-name {
     color: #FFB30E;
 }
+
+.login-button {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}

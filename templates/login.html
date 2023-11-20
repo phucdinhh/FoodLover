@@ -1,7 +1,16 @@
-<div class="container text-center">
-    <form action="/login" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form class="container w-25" action="/login" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+        </div>
+        <div>Don't have an account? <a href="{{ url_for('auth.register') }}">Register</a></div>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
-</div>
+{% endblock %}
